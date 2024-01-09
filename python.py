@@ -16,22 +16,24 @@ result = ''
 
 if type == 'encode':
     for letter in input_word_list:
-        letter_position = int(universal_list_forward.index(letter))
-        if (25 - letter_position) < count:
-            new_position = count - ((25 - letter_position) + 1)
-            input_word_list[current_position] = universal_list_forward[new_position]
-        else:
-            input_word_list[current_position] = universal_list_forward[letter_position + count]
+        if universal_list_forward.count(letter):
+            letter_position = int(universal_list_forward.index(letter))
+            if (25 - letter_position) < count:
+                new_position = count - ((25 - letter_position) + 1)
+                input_word_list[current_position] = universal_list_forward[new_position]
+            else:
+                input_word_list[current_position] = universal_list_forward[letter_position + count]
         current_position += 1
         
 elif type == 'decode':
     for letter in input_word_list: 
-        letter_position = int(universal_list_backward.index(letter))
-        if (25 - letter_position) < count:
-            new_position = count - ((25 - letter_position) + 1)
-            input_word_list[current_position] = universal_list_backward[new_position]
-        else:
-            input_word_list[current_position] = universal_list_backward[letter_position + count]
+        if universal_list_backward.count(letter):
+            letter_position = int(universal_list_backward.index(letter))
+            if (25 - letter_position) < count:
+                new_position = count - ((25 - letter_position) + 1)
+                input_word_list[current_position] = universal_list_backward[new_position]
+            else:
+                input_word_list[current_position] = universal_list_backward[letter_position + count]
         current_position += 1
 
 for letter in input_word_list:
